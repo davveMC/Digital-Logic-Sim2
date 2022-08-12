@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d20777df9f2abf459a3872a097804f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a321fca4054780b4db3f0a8699228446, type: 3}
   m_Name: Keybindings
   m_EditorClassIdentifier: 
   keybindingChecks:
   - keybindingAction: 9
-    keyCode: 0
+    keyCode: 12
   - keybindingAction: 0
     keyCode: 8
   - keybindingAction: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
   - keybindingAction: 5
     keyCode: 99
   - keybindingAction: 6
-    keyCode: 118
+    keyCode: 112
   - keybindingAction: 7
     keyCode: 43
   - keybindingAction: 8

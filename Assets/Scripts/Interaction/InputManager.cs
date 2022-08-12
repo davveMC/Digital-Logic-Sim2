@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
     [SerializeField] private Keybindings keybindings;
+    
+    // instance = this;
 
     private void Awake()
     {
@@ -22,7 +25,7 @@ public class InputManager : MonoBehaviour
     }
     public KeyCode GetKeyForAction(KeybindingActions keybindingAction)
     {
-        
+        Debug.Log("HERE!123333123");
         foreach(Keybindings.KeybindingCheck keybindingCheck in keybindings.keybindingChecks)
         {
             if(keybindingCheck.keybindingAction == keybindingAction)
@@ -34,10 +37,14 @@ public class InputManager : MonoBehaviour
     }
     public bool GetKeyDown(KeybindingActions key)
     {
+        Debug.Log("Herer fucker");
         foreach(Keybindings.KeybindingCheck keybindingCheck in keybindings.keybindingChecks)
         {
+            Debug.Log("HERE123!");
             if(keybindingCheck.keybindingAction == key)
             {
+                Debug.Log(keybindingCheck.keyCode);
+                Debug.Log("HERE!");
                 return Input.GetKeyDown(keybindingCheck.keyCode);
             }
         }

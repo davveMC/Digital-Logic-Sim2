@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ChipInteraction : InteractionHandler {
 
 	private InputManager inputManager;
@@ -38,6 +39,18 @@ public class ChipInteraction : InteractionHandler {
 	Vector2 copyPosition;
 	Mesh selectionMesh;
 	Vector3[] selectedChipsOriginalPos;
+
+	private void Start()
+	{
+		inputManager = InputManager.instance;
+	}
+
+	private void Update()
+	{
+		Debug.Log(KeybindingActions.Delete);
+		Debug.Log(KeybindingActions.RotateLeft);
+		Debug.Log(inputManager.GetKeyDown(KeybindingActions.Delete));
+	}
 
 	void Awake () {
 		newChipsToPlace = new List<Chip> ();
@@ -168,7 +181,7 @@ public class ChipInteraction : InteractionHandler {
 	void HandleDeletion () {
 		// Delete any selected chips
 		// Debug.Log(InputManager.instance.GetKeyDown(KeybindingActions.Delete));
-		if (InputManager.instance.GetKeyDown(KeybindingActions.Delete)) {
+		if (inputManager.GetKeyDown(KeybindingActions.Delete)) {
 			for (int i = selectedChips.Count - 1; i >= 0; i--) {
 				DeleteChip (selectedChips[i]);
 				selectedChips.RemoveAt (i);
@@ -189,10 +202,11 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleRotation () {
 		//Rotate selected chips
-		if (InputManager.instance.GetKeyDown(KeybindingActions.RotateRight)) {
+		Debug.Log(KeybindingActions.RotateRight);
+		if (inputManager.GetKeyDown(KeybindingActions.RotateRight)) {
 			RotateSelectedChips (-rotationAmount);
 		}
-		if (InputManager.instance.GetKeyDown(KeybindingActions.RotateLeft)) {
+		if (inputManager.GetKeyDown(KeybindingActions.RotateLeft)) {
 			RotateSelectedChips (rotationAmount);
 		}
 	}
@@ -204,7 +218,7 @@ public class ChipInteraction : InteractionHandler {
 	}
 
 	void HandleChipCopying () {
-		if (InputManager.instance.GetKeyDown(KeybindingActions.Copy)) {
+		if (inputManager.GetKeyDown(KeybindingActions.Copy)) {
 			if (selectedChips.Count == 0) {
 				return;
 			}
@@ -223,7 +237,7 @@ public class ChipInteraction : InteractionHandler {
 	}
 
 	void HandleChipPasting () {
-		if (InputManager.instance.GetKeyDown(KeybindingActions.Paste)) {
+		if (inputManager.GetKeyDown(KeybindingActions.Paste)) {
 			selectedChips.Clear ();
 			Vector2 offset = InputHelper.MouseWorldPos - copyPosition;
 			foreach (Chip chip in copiedChips) {
