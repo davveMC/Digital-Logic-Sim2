@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ChipInteraction : InteractionHandler {
 
+	private InputManager inputManager;
+
 	public enum State { None, PlacingNewChips, MovingOldChips, SelectingChips }
 	public event System.Action<Chip> onDeleteChip;
 
@@ -165,7 +167,8 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleDeletion () {
 		// Delete any selected chips
-		if (InputHelper.AnyOfTheseKeysDown (KeyCode.Backspace, KeyCode.Delete)) {
+		// Debug.Log(InputManager.instance.GetKeyDown(KeybindingActions.Delete));
+		if (InputManager.instance.GetKeyDown(KeybindingActions.Delete)) {
 			for (int i = selectedChips.Count - 1; i >= 0; i--) {
 				DeleteChip (selectedChips[i]);
 				selectedChips.RemoveAt (i);
@@ -186,10 +189,10 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleRotation () {
 		//Rotate selected chips
-		if (Input.GetKeyDown (clockwiseRotationKey)) {
+		if (InputManager.instance.GetKeyDown(KeybindingActions.RotateRight)) {
 			RotateSelectedChips (-rotationAmount);
 		}
-		if (Input.GetKeyDown (counterclockwiseRotationKey)) {
+		if (InputManager.instance.GetKeyDown(KeybindingActions.RotateLeft)) {
 			RotateSelectedChips (rotationAmount);
 		}
 	}
@@ -201,7 +204,7 @@ public class ChipInteraction : InteractionHandler {
 	}
 
 	void HandleChipCopying () {
-		if (InputHelper.AnyOfTheseKeysHeld(KeyCode.LeftControl, KeyCode.RightControl) && Input.GetKeyDown(KeyCode.C)) {
+		if (InputManager.instance.GetKeyDown(KeybindingActions.Copy)) {
 			if (selectedChips.Count == 0) {
 				return;
 			}
@@ -220,7 +223,7 @@ public class ChipInteraction : InteractionHandler {
 	}
 
 	void HandleChipPasting () {
-		if (InputHelper.AnyOfTheseKeysHeld(KeyCode.LeftControl, KeyCode.RightControl) && Input.GetKeyDown(KeyCode.V)) {
+		if (InputManager.instance.GetKeyDown(KeybindingActions.Paste)) {
 			selectedChips.Clear ();
 			Vector2 offset = InputHelper.MouseWorldPos - copyPosition;
 			foreach (Chip chip in copiedChips) {

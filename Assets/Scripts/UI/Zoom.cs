@@ -11,24 +11,26 @@ public class Zoom : MonoBehaviour
     float interactionNum = 0.25f;
     public GameObject[] objectsToZoom;
     public ChipInteraction _chipInteraction;
-
+    float scroll;
+    public float zoom = 1;
     void Update()
-    {
+    {   
+        scroll = Input.GetAxis("Mouse ScrollWheel");
+        // Debug.Log(scroll);
         _chipInteraction = GameObject.FindWithTag("Interaction").GetComponent<ChipInteraction>(); 
         objectsToZoom = GameObject.FindGameObjectsWithTag("Zoom");
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown("=") && scale.x < max) {
-            scale += scaleChange;
-            interactionNum += 0.1f;
-        }
-
-        else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown("-") && scale.x > min) {
-            scale -= scaleChange;
-            interactionNum -= 0.1f;
+        if (scroll != 0) {
+            scale.x -= scroll * zoom;
+            scale.y -= scroll * zoom;
+            scale.z -= scroll * zoom;
+            interactionNum -= scroll * zoom;
         }
 
         _chipInteraction.selectionBoundsBorderPadding = interactionNum;
         for (int i = 0; i < objectsToZoom.Length; i++) {
             objectsToZoom[i].transform.localScale = scale;
         }
+        // scale -= Input.GetAxis("Mouse ScrollWheel")
+        // Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
     }
 }
