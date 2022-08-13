@@ -15,6 +15,8 @@ public class PinAndWireInteraction : InteractionHandler {
 	public Transform wireHolder;
 	public Wire wirePrefab;
 
+	private InputManager inputManager;
+
 	State currentState;
 	Pin pinUnderMouse;
 	Pin wireStartPin;
@@ -87,7 +89,7 @@ public class PinAndWireInteraction : InteractionHandler {
 
 	void HandleWireDeletion () {
 		if (highlightedWire) {
-			if (InputHelper.AnyOfTheseKeysDown (KeyCode.Backspace, KeyCode.Delete)) {
+			if (inputManager.GetKeyDown(KeybindingActions.Delete)) {
 				RequestFocus ();
 				if (HasFocus) {
 					DestroyWire (highlightedWire);
@@ -99,7 +101,7 @@ public class PinAndWireInteraction : InteractionHandler {
 
 	void HandleWirePlacement () {
 		// Cancel placing wire
-		if (InputHelper.AnyOfTheseKeysDown (KeyCode.Escape, KeyCode.Backspace, KeyCode.Delete) || Input.GetMouseButtonDown (1)) {
+		if (inputManager.GetKeyDown(KeybindingActions.Delete) || Input.GetMouseButtonDown (1)) {
 			StopPlacingWire ();
 		}
 		// Update wire position and check if user wants to try connect the wire

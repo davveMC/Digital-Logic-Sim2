@@ -40,6 +40,22 @@ public static class InputHelper {
 		}
 		return false;
 	}
+	public static bool AnyOfTheseKeys (params KeyCode[] keys) {
+		for (int i = 0; i < keys.Length; i++) {
+			if (Input.GetKey (keys[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public static bool AnyOfTheseKeysUp (params KeyCode[] keys) {
+		for (int i = 0; i < keys.Length; i++) {
+			if (Input.GetKeyUp (keys[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static bool AnyOfTheseKeysHeld (params KeyCode[] keys) {
 		for (int i = 0; i < keys.Length; i++) {

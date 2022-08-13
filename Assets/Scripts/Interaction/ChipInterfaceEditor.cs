@@ -60,6 +60,13 @@ public class ChipInterfaceEditor : InteractionHandler {
 	int currentGroupID;
 	Dictionary<int, ChipSignal[]> groupsByID;
 
+	private InputManager inputManager;
+
+	private void Start()
+	{
+		inputManager = InputManager.instance;
+	}
+
 	void Awake () {
 		pinType.onValueChanged.AddListener(delegate { DropdownValueChanged(pinType); });
 		signals = new List<ChipSignal> ();

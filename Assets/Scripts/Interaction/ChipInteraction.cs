@@ -45,13 +45,6 @@ public class ChipInteraction : InteractionHandler {
 		inputManager = InputManager.instance;
 	}
 
-	private void Update()
-	{
-		Debug.Log(KeybindingActions.Delete);
-		Debug.Log(KeybindingActions.RotateLeft);
-		Debug.Log(inputManager.GetKeyDown(KeybindingActions.Delete));
-	}
-
 	void Awake () {
 		newChipsToPlace = new List<Chip> ();
 		selectedChips = new List<Chip> ();
@@ -180,7 +173,6 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleDeletion () {
 		// Delete any selected chips
-		// Debug.Log(InputManager.instance.GetKeyDown(KeybindingActions.Delete));
 		if (inputManager.GetKeyDown(KeybindingActions.Delete)) {
 			for (int i = selectedChips.Count - 1; i >= 0; i--) {
 				DeleteChip (selectedChips[i]);
@@ -202,7 +194,6 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleRotation () {
 		//Rotate selected chips
-		Debug.Log(KeybindingActions.RotateRight);
 		if (inputManager.GetKeyDown(KeybindingActions.RotateRight)) {
 			RotateSelectedChips (-rotationAmount);
 		}
