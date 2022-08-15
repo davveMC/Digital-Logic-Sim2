@@ -13,10 +13,7 @@ public class Keybindings : ScriptableObject
     public class KeybindingCheck
     {
         public KeybindingActions keybindingAction;
-        public KeyCode keyCode0; 
-        public KeyCode keyCode1;
-        public KeyCode keyCode2;
-        public KeyCode keyCode3;
+        public KeyCode[] keyCode; 
     }
     public KeybindingCheck[] keybindingChecks;
 

@@ -1,0 +1,9 @@
+Delete=;
+ZoomIn=;
+ZoomOut=;
+RotateLeft=q;
+RotateRight=e;
+Copy=[Ctrl,c];
+Paste=[Ctrl,p];
+StackAdd=;
+StackRemove=;

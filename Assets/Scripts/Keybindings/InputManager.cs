@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private Keybindings keybindings;
     
-    // Only one instance can run, destroys others.
+    // Only one instance can run, destroys others. also don't destroys when changing scenes
     private void Awake()
     {
         if(instance == null)
@@ -23,19 +23,21 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    // This function down below could be neat in the future which is why I added it but it doesn't work properly
-    // public KeyCode GetKeyForAction(KeybindingActions keybindingAction)
+    // Returns all the keys corresponding to the action
+    
+    // public KeyCode[] GetKeysForAction(KeybindingActions keybindingAction)
     // {
     //     foreach(Keybindings.KeybindingCheck keybindingCheck in keybindings.keybindingChecks)
     //     {
     //         if(keybindingCheck.keybindingAction == keybindingAction)
     //         {
-    //             return keybindingCheck.keyCode0; // Didn't find a way to send all 4 keys
-
+    //             Debug.Log(keybindingCheck.keyCode);
+    //             return keybindingCheck.keyCode;
     //         }
+    //         return keybindingCheck.keyCode;
     //     }
-    //     return KeyCode.None;
     // }
+
 
     // Checks if the corresponding key to the action is pressed and returns a boolean
     // This also uses AnyOfTheseKeysDown() which I found amost the files (scripts/interactions/InputHelper)
@@ -47,10 +49,7 @@ public class InputManager : MonoBehaviour
             if(keybindingCheck.keybindingAction == key)
             {
                 return InputHelper.AnyOfTheseKeysDown(
-                keybindingCheck.keyCode0, 
-                keybindingCheck.keyCode1,
-                keybindingCheck.keyCode2,
-                keybindingCheck.keyCode3
+                keybindingCheck.keyCode
                 );
             }
         }
@@ -67,10 +66,7 @@ public class InputManager : MonoBehaviour
             if(keybindingCheck.keybindingAction == key)
             {
                 return InputHelper.AnyOfTheseKeys(
-                keybindingCheck.keyCode0, 
-                keybindingCheck.keyCode1,
-                keybindingCheck.keyCode2,
-                keybindingCheck.keyCode3
+                keybindingCheck.keyCode
                 );
             }
         }
@@ -86,10 +82,7 @@ public class InputManager : MonoBehaviour
             if(keybindingCheck.keybindingAction == key)
             {
                 return InputHelper.AnyOfTheseKeysUp(
-                keybindingCheck.keyCode0, 
-                keybindingCheck.keyCode1,
-                keybindingCheck.keyCode2,
-                keybindingCheck.keyCode3
+                keybindingCheck.keyCode
                 );
             }
         }

@@ -13,53 +13,21 @@ MonoBehaviour:
   m_Name: Keybindings
   m_EditorClassIdentifier: 
   keybindingChecks:
-  - keybindingAction: 9
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
   - keybindingAction: 0
-    keyCode0: 8
-    keyCode1: 127
-    keyCode2: 324
-    keyCode3: 27
+    keyCode: 7f000000
   - keybindingAction: 1
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
+    keyCode: 11010000
   - keybindingAction: 2
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
+    keyCode: 12010000
   - keybindingAction: 3
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
-  - keybindingAction: 5
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
-  - keybindingAction: 6
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
-  - keybindingAction: 7
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
-  - keybindingAction: 8
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
+    keyCode: 71000000
   - keybindingAction: 4
-    keyCode0: 0
-    keyCode1: 0
-    keyCode2: 0
-    keyCode3: 0
+    keyCode: 65000000
+  - keybindingAction: 5
+    keyCode: 63000000
+  - keybindingAction: 6
+    keyCode: 70000000
+  - keybindingAction: 7
+    keyCode: 13010000
+  - keybindingAction: 8
+    keyCode: 14010000

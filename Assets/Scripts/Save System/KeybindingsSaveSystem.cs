@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class KeybindingsSaveSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void SaveKeybindings()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // PlayerPrefs.setInt("SavedInteger", intToSave);
+        // PlayerPrefs
     }
 }

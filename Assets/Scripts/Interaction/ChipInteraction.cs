@@ -173,6 +173,7 @@ public class ChipInteraction : InteractionHandler {
 
 	void HandleDeletion () {
 		// Delete any selected chips
+		Debug.Log(inputManager);
 		if (inputManager.GetKeyDown(KeybindingActions.Delete)) {
 			for (int i = selectedChips.Count - 1; i >= 0; i--) {
 				DeleteChip (selectedChips[i]);
